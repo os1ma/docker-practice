@@ -7,33 +7,31 @@
 ## アプリケーションの概要
 
 ## ディレクトリ構成
-docker-study/
-├─ my-app/ # サーバサイドのプロジェクトです。SpringBootによるAPIです。
-├─ my-db/ # ローカルでの開発用のデータベースです。
-└─ my-web/ # フロントエンドのプロジェクトです。Nuxt.jsによるSPAです。
+- my-app
+    - SpringBootによるAPI
+- my-db
+    - ローカルでの開発用のデータベース
+- my-web
+    - Vue.jsによるSPA
 
 ## Usage
 
-以下のいずれかのコマンドでコンテナを起動後、ブラウザからhttp://<Docker用仮想マシンのIP>にアクセスしてください。
-
-### 開発用のコンテナを起動する場合
+### 開発用のホットデプロイモードでのコンテナを起動
 
 ```
-docker-compose up # Ctrl + Cで終了
+docker-compose up
 ```
-
-my-app、my-webのソースコードを編集するとホットデプロイされます。
 
 ### 本番用にコンテナをビルド
 
 ```
-docker-compose build
+build.sh
 ```
 
-### 本番用のコンテナを起動する場合
+### 本番用構成でコンテナを起動
 
 ```
-docker-compose -f docker-compose-prod.yml up # Ctrl + Cで終了
+docker-compose -f docker-compose-prod.yml up
 ```
 
 ### コンテナのクリーンアップ
