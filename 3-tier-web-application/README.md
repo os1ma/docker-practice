@@ -25,13 +25,13 @@ docker-compose up
 ### 本番用にコンテナをビルド
 
 ```
-build.sh
+./build.sh
 ```
 
-### 本番用構成でコンテナを起動
+### 本番と同様の構成でコンテナを起動
 
 ```
-docker-compose -f docker-compose-prod.yml up
+docker-compose -f docker-compose-like-prod.yml up
 ```
 
 ### コンテナのクリーンアップ

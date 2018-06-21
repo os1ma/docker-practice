@@ -16,9 +16,15 @@ services:
       - my-db
     depends_on:
       - my-db
+    ports:
+      - 8080:8080
 
   my-db:
     image: my-db
+    ports:
+      - 3306:3306
+    volumes:
+      - ./my-db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: user
