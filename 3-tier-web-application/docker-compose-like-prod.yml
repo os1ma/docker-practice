@@ -18,6 +18,7 @@ services:
       - my-db
     ports:
       - 8080:8080
+    restart: on-failure
 
   my-db:
     image: my-db
