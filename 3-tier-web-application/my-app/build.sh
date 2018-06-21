@@ -3,7 +3,7 @@
 IMAGE_NAME=my-app
 WORKING_DIR=/opt/my-app
 
-cd `dirname $0`/
+cd `dirname $0`
 
 docker run \
     --rm \
