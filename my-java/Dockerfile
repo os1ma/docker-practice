@@ -1,9 +1,12 @@
-FROM centos
+# 以下の公式 Dockerfile を参考に簡略化
+# https://github.com/AdoptOpenJDK/openjdk-docker/blob/master/11/jdk/debian/Dockerfile.hotspot.releases.full
+FROM ubuntu:21.04
 
-RUN yum update -y
-RUN yum install -y java-1.8.0-openjdk
-RUN yum install -y java-1.8.0-openjdk-devel
-ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
+RUN apt update
+RUN apt install -y curl
+RUN curl -LfSo /tmp/openjdk.tar.gz https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.11%2B9/OpenJDK11U-jdk_x64_linux_hotspot_11.0.11_9.tar.gz
+RUN mkdir -p /opt/java/openjdk
+RUN tar -xf /tmp/openjdk.tar.gz --strip-components=1 -C /opt/java/openjdk
 
-RUN mkdir -p /opt/my-app
-WORKDIR /opt/my-app
+ENV JAVA_HOME=/opt/java/openjdk
+ENV PATH="/opt/java/openjdk/bin:$PATH"
