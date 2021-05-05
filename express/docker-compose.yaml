@@ -11,7 +11,7 @@ services:
     volumes:
       - $PWD:/opt/my-app
     working_dir: /opt/my-app
-    command: npm start
+    command: sh -c 'npm i && exec npm start'
 
   my-db:
     image: mysql:5.7.34
