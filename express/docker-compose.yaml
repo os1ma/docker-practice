@@ -1,0 +1,21 @@
+version: '3'
+services:
+
+  my-app:
+    build: .
+    image: my-node
+    depends_on:
+      - my-db
+    ports:
+      - 3000:3000
+    volumes:
+      - $PWD:/opt/my-app
+    working_dir: /opt/my-app
+    command: npm start
+
+  my-db:
+    image: mysql:5.7.34
+    volumes:
+      - $PWD/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: root
